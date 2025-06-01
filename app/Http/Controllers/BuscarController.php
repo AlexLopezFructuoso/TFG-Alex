@@ -39,6 +39,21 @@ class BuscarController extends Controller
             ->orWhere('cantidad', 'like', "%{$query}%")
             ->get();
 
-        return view('search', compact('facturas', 'personas', 'productos', 'query'));
+        return view('buscar', compact('facturas', 'personas', 'productos', 'query'));
     }
+
+    public function personasFacturas(Request $request)
+    {
+        $personaId = $request->input('persona_id');
+        $personas = Persona::all();
+
+        if ($personaId) {
+            $facturas = Factura::with(['productos'])->where('persona_id', $personaId)->get();
+            return view('facturas.personas_facturas', compact('personas', 'facturas', 'personaId'));
+        }
+
+        return view('facturas.personas_facturas', compact('personas'));
+    }
+
+    
 }

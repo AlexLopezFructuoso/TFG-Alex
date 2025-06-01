@@ -34,7 +34,7 @@ class VentaFacturaController extends Controller
     {
         $productos = Producto::all();
 
-        $persona = Persona::all();
+        $persona = Persona::where('tipo', 'cliente')->get();
 
         return view('facturas.crearFacturas', compact('productos', 'persona'));    }
 

@@ -31,7 +31,7 @@ class CompraFacturaController extends VentaFacturaController
     public function create()
     {
         $productos = Producto::all();
-        $persona = Persona::all();
+        $persona = Persona::where('tipo', 'proveedor')->get();
 
         return view('facturas.crearCompraFacturas', compact('productos', 'persona'));
     }

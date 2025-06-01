@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('persona_id')->constrained('personas');
             $table->date('fecha');
             $table->enum('tipo', ['compra', 'venta']);
-            $table->decimal('total', 10, 2);//-->nullable();
+            $table->decimal('total', 10, 2)->nullable();
             $table->timestamps();
         });
     }
