@@ -47,16 +47,16 @@ class VentaFacturaController extends Controller
     $data['tipo'] = 'venta';
 
     // Validar que se seleccione un cliente
-    if (empty($data['customer_id'])) {
-        return redirect()->back()->withErrors(['customer_id' => 'Debe seleccionar un cliente'])->withInput();
+    if (empty($data['persona_id'])) {
+        return redirect()->back()->withErrors(['persona_id' => 'Debe seleccionar un cliente'])->withInput();
     }
 
-    $productos = $request->input('products', []);
-    $quantities = $request->input('quantities', []);
+    $productos = $request->input('productos', []);
+    $cantidades = $request->input('cantidades', []);
 
     // Validar que se seleccione al menos un producto
     if (empty($productos) || count(array_filter($productos)) == 0) {
-        return redirect()->back()->withErrors(['products' => 'Debe seleccionar al menos un producto'])->withInput();
+        return redirect()->back()->withErrors(['productos' => 'Debe seleccionar al menos un producto'])->withInput();
     }
 
     // Validar stock mínimo para cada producto
@@ -65,7 +65,7 @@ class VentaFacturaController extends Controller
         if ($productos[$i] != '') {
             $producto = Producto::find($productos[$i]);
             if ($producto) {
-                $cantidad = $quantities[$i];
+                $cantidad = $cantidades[$i];
                 if ($producto->cantidad - $cantidad < $stock_minimo) {
                     return redirect()->back()->withErrors(['stock' => "No hay stock suficiente para el producto {$producto->nombre}"])->withInput();
                 }
@@ -73,12 +73,7 @@ class VentaFacturaController extends Controller
         }
     }
 
-    // Mapear customer_id a persona_id para la base de datos
-    if (isset($data['customer_id'])) {
-        $data['persona_id'] = $data['customer_id'];
-        unset($data['customer_id']);
-    }
-
+ 
     // Asignar fecha actual si no está definida
     if (!isset($data['fecha']) || empty($data['fecha'])) {
         $data['fecha'] = date('Y-m-d');
@@ -92,7 +87,7 @@ class VentaFacturaController extends Controller
         if ($productos[$i] != '') {
             $producto = Producto::find($productos[$i]);
             if ($producto) {
-                $cantidad = $quantities[$i];
+                $cantidad = $cantidades[$i];
                 $total += $producto->precio * $cantidad;
                 $factura->productos()->attach($producto->id, ['cantidad' => $cantidad]);
             }

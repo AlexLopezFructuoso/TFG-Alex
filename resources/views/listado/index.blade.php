@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 style="margin-top: 20px;">Listado Dinámico</h1>
+    <h1 style="margin-top: 20px;">Listado</h1>
 
     <label for="tabla" style="font-weight: bold;">Selecciona una tabla:</label>
     <select id="tabla" class="form-select" style="width: 200px; margin-bottom: 20px;">
@@ -9,7 +9,6 @@
         <option value="productos">Productos</option>
         <option value="personas">Personas</option>
         <option value="facturas">Facturas</option>
-        <option value="factura_producto">Factura Producto</option>
         <option value="deudas">Deudas</option>
         <option value="pagos">Pagos</option>
     </select>
@@ -51,10 +50,7 @@
                         columnas.forEach(col => {
                             let valor = obj[col];
 
-                            if (typeof valor === 'object' && valor !== null) {
-                                // Si es objeto (relación), mostramos su id
-                                valor = valor.id ?? '-';
-                            } else if (typeof valor === 'string' && valor.match(/^\d{4}-\d{2}-\d{2}T/)) {
+                           if (typeof valor === 'string' && valor.match(/^\d{4}-\d{2}-\d{2}T/)) {
                                 let fecha = new Date(valor);
                                 valor = fecha.toLocaleDateString('es-ES');
                             }

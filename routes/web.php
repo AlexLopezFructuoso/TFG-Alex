@@ -6,7 +6,7 @@ use App\Http\Controllers\ListadoController;
 use App\Http\Controllers\VentaFacturaController;
 use App\Http\Controllers\CompraFacturaController;
 use App\Http\Controllers\BuscarController;
-
+use App\Http\Controllers\FacturasPersonasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');
+})->middleware(['auth', 'verified'/*, 'role:admin'*/])->name('dashboard');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -40,7 +40,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/buscar', [BuscarController::class, 'index'])->name('buscar.index');
     Route::get('/buscar/resultados', [BuscarController::class, 'search'])->name('buscar.resultados');
-    Route::get('/personas/facturas', [BuscarController::class, 'personasFacturas'])->name('personas.facturas');
+    Route::get('/personas/facturas', [FacturasPersonasController::class, 'personasFacturas'])->name('personas.facturas');
 
 });
 

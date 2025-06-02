@@ -20,28 +20,36 @@
     </form>
 
     @isset($facturas)
-        <h2 class="mt-4">Facturas de {{ $personas->find($personaId)->nombre }}</h2>
-        @if($facturas->isEmpty())
+        <h2 class="mt-4">Facturas</h2>
+
+        @if(empty($facturas))
             <p>No se encontraron facturas para esta persona.</p>
         @else
-            @foreach($facturas as $factura)
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Factura #{{ $factura->id }} - Fecha: {{ $factura->fecha }} - Tipo: {{ $factura->tipo }}
-                    </div>
-                    <div class="card-body">
-                        <h5>Productos:</h5>
-                        <ul>
-                            @foreach($factura->productos as $producto)
-                                <li>
-                                    {{ $producto->nombre }} - Cantidad: {{ $producto->pivot->cantidad }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            @endforeach
+            {{-- Lista simple de facturas y productos --}}
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>ID Factura</th>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($facturas as $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->fecha }}</td>
+                            <td>{{ $item->tipo }}</td>
+                            <td>{{ $item->producto_nombre ?? 'N/A' }}</td>
+                            <td>{{ $item->cantidad ?? 'N/A' }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         @endif
     @endisset
 </div>
 @endsection
+

@@ -27,16 +27,14 @@ class ListadoController extends Controller
                 $datos = Persona::all();
                 break;
             case 'facturas':
-                $datos = Factura::with('persona')->get();
+                $datos = Factura::all();        
                 break;
-            //case 'factura_producto':
-            //    $datos = Factura_Producto::with(['factura', 'producto'])->get();
-            //    break;
+            
             case 'deudas':
-                $datos = Deuda::with('persona')->get();
+                $datos = Deuda::all(); 
                 break;
             case 'pagos':
-                $datos = Pago::with(['persona', 'deuda'])->get();
+                $datos = Pago::all(); 
                 break;
             default:
                 $datos = collect();

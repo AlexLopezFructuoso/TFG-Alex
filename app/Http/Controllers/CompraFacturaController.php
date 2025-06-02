@@ -44,21 +44,17 @@ class CompraFacturaController extends VentaFacturaController
         $data = $request->all();
         $data['tipo'] = 'compra'; 
 
-        if (empty($data['customer_id'])) {
-        return redirect()->back()->withErrors(['customer_id' => 'Debe seleccionar un cliente'])->withInput();
+        if (empty($data['persona_id'])) {
+        return redirect()->back()->withErrors(['persona_id' => 'Debe seleccionar un cliente'])->withInput();
     }
 
-    $productos = $request->input('products', []);
-        $quantities = $request->input('quantities', []);
+    $productos = $request->input('productos', []);
+        $cantidades = $request->input('cantidades', []);
 
         if (empty($productos) || count(array_filter($productos)) == 0) {
-        return redirect()->back()->withErrors(['products' => 'Debe seleccionar al menos un producto'])->withInput();
+        return redirect()->back()->withErrors(['productos' => 'Debe seleccionar al menos un producto'])->withInput();
     }
-        // Map customer_id to persona_id for database insert
-        if (isset($data['customer_id'])) {
-            $data['persona_id'] = $data['customer_id'];
-            unset($data['customer_id']);
-        }
+        
 
         if (!isset($data['fecha']) || empty($data['fecha'])) {
             $data['fecha'] = date('Y-m-d');
@@ -72,9 +68,9 @@ class CompraFacturaController extends VentaFacturaController
 
         for ($i = 0; $i < count($productos); $i++) {
             if ($productos[$i] != '') {
-                $producto = \App\Models\Producto::find($productos[$i]);
+                $producto = Producto::find($productos[$i]);
                 if ($producto) {
-                    $cantidad = $quantities[$i];
+                    $cantidad = $cantidades[$i];
                     $total += $producto->precio * $cantidad;
                     $factura->productos()->attach($producto->id, ['cantidad' => $cantidad]);
                 }

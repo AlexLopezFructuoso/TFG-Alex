@@ -42,12 +42,12 @@
                     <div class="card-body">
 
                         <div class="form-group row mb-3">
-                            <label for="customer_id" class="col-sm-1 col-form-label">Cliente</label>
+                            <label for="persona_id" class="col-sm-1 col-form-label">Cliente</label>
                             <div class="col-sm-4">
-                                <select name="customer_id" class="form-control">
+                                <select name="persona_id" class="form-control">
                                     <option value="">Seleccione un cliente</option>
                                     @foreach ($persona as $perso)
-                                    <option value="{{ $perso->id }}" {{ old('customer_id') == $perso->id ? 'selected' : '' }}>
+                                    <option value="{{ $perso->id }}" {{ old('persona_id') == $perso->id ? 'selected' : '' }}>
                                         {{ $perso->nombre }}
                                     </option>
                                     @endforeach
@@ -65,17 +65,17 @@
                             <tbody>
                                 <tr id="product0">
                                     <td>
-                                        <select name="products[]" class="form-control">
+                                        <select name="productos[]" class="form-control">
                                             <option value="">Seleccione un producto</option>
                                             @foreach ($productos as $produc)
-                                            <option value="{{ $produc->id }}" {{ (collect(old('products'))->contains($produc->id)) ? 'selected' : '' }}>
+                                            <option value="{{ $produc->id }}" {{ (collect(old('productos'))->contains($produc->id)) ? 'selected' : '' }}>
                                                 Stock({{ $produc->cantidad }}) {{ $produc->nombre }} (${{ number_format($produc->precio, 2) }})
                                             </option>
                                             @endforeach
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="number" name="quantities[]" class="form-control" value="{{ old('quantities.0', 1) }}" min="1" />
+                                        <input type="number" name="cantidades[]" class="form-control" value="{{ old('cantidades.0', 1) }}" min="1" />
                                     </td>
                                 </tr>
                             </tbody>
@@ -106,7 +106,7 @@
         $("#add_row").click(function(e) {
             e.preventDefault();
             let new_row = $('#product0').clone();
-            new_row.attr('id', 'product' + row_number);
+            new_row.attr('id', 'productos' + row_number);
             new_row.find('select').val('');
             new_row.find('input').val(1);
             $('#products_table tbody').append(new_row);
@@ -116,7 +116,7 @@
         $("#delete_row").click(function(e) {
             e.preventDefault();
             if (row_number > 1) {
-                $('#product' + (row_number - 1)).remove();
+                $('#productos' + (row_number - 1)).remove();
                 row_number--;
             }
         });
