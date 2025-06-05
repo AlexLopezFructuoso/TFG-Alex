@@ -8,16 +8,6 @@ use App\Http\Controllers\CompraFacturaController;
 use App\Http\Controllers\BuscarController;
 use App\Http\Controllers\FacturasPersonasController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,7 +15,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'/*, 'role:admin'*/])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'rol:admin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,6 +31,9 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
     Route::get('/buscar', [BuscarController::class, 'index'])->name('buscar.index');
     Route::get('/buscar/resultados', [BuscarController::class, 'search'])->name('buscar.resultados');
     Route::get('/personas/facturas', [FacturasPersonasController::class, 'personasFacturas'])->name('personas.facturas');
+
+      Route::get('/producto-cliente', [\App\Http\Controllers\ProductoClienteController::class, 'index'])->name('producto-cliente.index');
+    Route::get('/producto-cliente/datos', [\App\Http\Controllers\ProductoClienteController::class, 'productoClientes'])->name('producto-cliente.datos');
 
 });
 
