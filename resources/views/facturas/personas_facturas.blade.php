@@ -25,7 +25,6 @@
         @if(empty($facturas))
             <p>No se encontraron facturas para esta persona.</p>
         @else
-            {{-- Lista simple de facturas y productos --}}
             <table class="table table-bordered mt-3">
                 <thead>
                     <tr>

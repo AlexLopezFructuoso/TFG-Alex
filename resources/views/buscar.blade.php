@@ -20,11 +20,11 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    @foreach(array_keys($facturas->first()->getAttributes()) as $key)
-                        @if(!in_array($key, ['created_at', 'updated_at']))
-                            <th>{{ ucfirst($key) }}</th>
-                        @endif
-                    @endforeach
+                            <th>Id</th>
+                            <th>Persona_id</th>
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,11 +48,11 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    @foreach(array_keys($personas->first()->getAttributes()) as $key)
-                        @if(!in_array($key, ['created_at', 'updated_at']))
-                            <th>{{ ucfirst($key) }}</th>
-                        @endif
-                    @endforeach
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,11 +76,12 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    @foreach(array_keys($productos->first()->getAttributes()) as $key)
-                        @if(!in_array($key, ['created_at', 'updated_at']))
-                            <th>{{ ucfirst($key) }}</th>
-                        @endif
-                    @endforeach
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                            <th>Tipo</th>
                 </tr>
             </thead>
             <tbody>

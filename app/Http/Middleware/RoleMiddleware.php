@@ -10,12 +10,12 @@ class RoleMiddleware
 {
     /**
      * Handle an incoming request.
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string  $role
+     * @param  \Illuminate\Http\Request  
+     * @param  \Closure  
+     * @param  string  
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next, string $rol)
     {
         if (!Auth::check()) {
             return redirect('login');
@@ -23,8 +23,8 @@ class RoleMiddleware
 
         $user = Auth::user();
 
-        if ($user->role !== $role) {
-            // Si el usuario no tiene el rol requerido, redirigir o abortar con 403
+        if ($user->rol !== $rol) {
+            // Si el usuario no tiene el rol requerido
             abort(403, 'No tienes permiso para acceder a esta página.');
         }
 

@@ -50,6 +50,7 @@
                         columnas.forEach(col => {
                             let valor = obj[col];
 
+                            //Formatear la fecha
                            if (typeof valor === 'string' && valor.match(/^\d{4}-\d{2}-\d{2}T/)) {
                                 let fecha = new Date(valor);
                                 valor = fecha.toLocaleDateString('es-ES');
@@ -59,7 +60,6 @@
                         });
                         html += '</tr>';
                     });
-
                     html += '</tbody></table>';
 
                     $('#contenedor-listado').html(html);

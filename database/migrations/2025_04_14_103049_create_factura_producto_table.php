@@ -16,7 +16,6 @@ class CreateFacturaProductoTable extends Migration
             $table->foreignId('factura_id')->constrained()->onDelete('cascade');
             $table->foreignId('producto_id')->constrained()->onDelete('cascade');
             $table->integer('cantidad');
-          //  $table->decimal('precio_unitario', 10, 2)->nullable(); // Cambiado a nullable para evitar error
             $table->timestamps();
         });
     }

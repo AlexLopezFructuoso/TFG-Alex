@@ -39,14 +39,14 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Role select -->
+        <!-- select de rol-->
         <div class="mt-4">
-            <x-input-label for="role" :value="__('Role')" />
-            <select id="role" name="role" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            <x-input-label for="rol" :value="__('Rol')" />
+            <select id="role" name="rol" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                 <option value="invitado" selected>Invitado</option>
                 <option value="admin">Admin</option>
             </select>
-            <x-input-error :messages="$errors->get('role')" class="mt-2" />
+            <x-input-error :messages="$errors->get('rol')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">

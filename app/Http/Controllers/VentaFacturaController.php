@@ -60,7 +60,7 @@ class VentaFacturaController extends Controller
     }
 
     // Validar stock mínimo para cada producto
-    $stock_minimo = 5; // Ejemplo, puede ser configurado en otro lugar
+    $stock_minimo = 5;
     for ($i = 0; $i < count($productos); $i++) {
         if ($productos[$i] != '') {
             $producto = Producto::find($productos[$i]);
@@ -97,30 +97,6 @@ class VentaFacturaController extends Controller
     $factura->save();
 
     return redirect()->route('facturas.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**

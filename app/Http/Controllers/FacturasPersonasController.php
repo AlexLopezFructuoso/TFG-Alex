@@ -14,7 +14,6 @@ class FacturasPersonasController extends Controller
         $personas = Persona::all();
         $facturas = [];
         if ($personaId) {
-            // Consulta SQL cruda para obtener facturas y productos relacionados a la persona
             $facturas = DB::select(
                 'SELECT f.id, f.fecha, f.tipo, p.nombre as producto_nombre, fp.cantidad
                  FROM facturas f

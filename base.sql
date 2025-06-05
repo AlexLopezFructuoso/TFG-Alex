@@ -45,7 +45,6 @@ CREATE TABLE factura_producto (
   factura_id INT NOT NULL,
   producto_id INT NOT NULL,
   cantidad INT NOT NULL,
-  precio_unitario DECIMAL(10,2) NOT NULL,
   FOREIGN KEY (factura_id) REFERENCES factura(id),
   FOREIGN KEY (producto_id) REFERENCES producto(id)
 ) engine=innodb;
@@ -73,33 +72,6 @@ CREATE TABLE pago (
   descripcion TEXT,
   FOREIGN KEY (persona_id) REFERENCES persona(id),
   FOREIGN KEY (deuda_id) REFERENCES deuda(id)
-) engine=innodb;
-
--- Tabla para registrar contratos de alquiler
-CREATE TABLE alquiler (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  empresa_arrendadora VARCHAR(100) NOT NULL,
-  fecha_inicio DATE NOT NULL,
-  fecha_fin DATE,
-  monto_mensual DECIMAL(10, 2) NOT NULL
-) engine=innodb;
-
-
--- Tabla de efectivo disponible en la empresa
-CREATE TABLE efectivo (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  billetes DECIMAL(10, 2) NOT NULL DEFAULT 0,
-  monedas DECIMAL(10, 2) NOT NULL DEFAULT 0,
-  fecha_actualizacion DATE NOT NULL
-) engine=innodb;
-
--- Tabla de cuentas bancarias (puede haber más de una)
-CREATE TABLE cuenta_bancaria (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  banco VARCHAR(100) NOT NULL,
-  numero_cuenta VARCHAR(50) NOT NULL,
-  saldo DECIMAL(10, 2) NOT NULL,
-  fecha_actualizacion DATE NOT NULL
 ) engine=innodb;
 
 */
