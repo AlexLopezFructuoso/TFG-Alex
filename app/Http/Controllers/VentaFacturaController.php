@@ -123,7 +123,7 @@ class VentaFacturaController extends Controller
 ]);
 
   $vendedor = new Buyer([
-    'name'          => 'alex',
+    'name'          => 'Alejandro',
     'custom_fields' => [
     'Telefono'          => '999999999',
     'Direccion'          => 'Calle alcantara',

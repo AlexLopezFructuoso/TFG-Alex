@@ -98,7 +98,7 @@ class CompraFacturaController extends VentaFacturaController
     {
         // En facturas de compra, el usuario es comprador y la persona es vendedor
         $comprador = new Buyer([
-            'name' => 'alex',
+            'name' => 'Alejandro',
             'custom_fields' => [
                 'Telefono' => '999999999',
                 'Direccion' => 'Calle alcantara',

@@ -19,16 +19,27 @@ class ProductoSeeder extends Seeder
         $producto->descripcion = '14 pulgadas';
         $producto->cantidad = 10;
         $producto->precio = 800.00;
-        $producto->tipo = 'uso_interno';
+        $producto->tipo = 'venta';
 
         $producto->save();
 
         $producto = new Producto();
 
-        $producto->nombre = 'Mesas de noche';
-        $producto->descripcion = '2 metros';
+        $producto->nombre = 'Altavoz JBL';
+        $producto->descripcion = '';
         $producto->cantidad = 45;
         $producto->precio = 87;
+        $producto->tipo = 'venta';
+
+        $producto->save();
+
+        
+        $producto = new Producto();
+
+        $producto->nombre = 'Movil Samsung S24 ULTRA';
+        $producto->descripcion = '128GB';
+        $producto->cantidad = 20;
+        $producto->precio = 850;
         $producto->tipo = 'venta';
 
         $producto->save();

@@ -22,6 +22,15 @@ class PersonaSeeder extends Seeder
 
         $persona->save();
 
+         $persona = new Persona();
+
+        $persona->nombre = 'Alberto Cliente';
+        $persona->tipo = 'cliente';
+        $persona->telefono = '677856578';
+        $persona->direccion = 'Calle 4';
+
+        $persona->save();
+
         $persona = new Persona();
 
         $persona->nombre = 'Pedro Proveedor';

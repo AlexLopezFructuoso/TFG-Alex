@@ -15,12 +15,12 @@ class Factura_productoSeeder extends Seeder
     {
         $factura = Factura::find(1);
 
-        // Attach productos a la factura con datos adicionales
+        
         $factura->productos()->attach([
-            1 => ['cantidad' => 1//, 'precio_unitario' => 800.00
-        ], // Laptop HP
-            2 => ['cantidad' => 2//, 'precio_unitario' => 10.00
-        ],  // Cable HDMI
+            1 => ['cantidad' => 1
+        ], 
+            2 => ['cantidad' => 2
+        ],  
         ]);
     }
 }
